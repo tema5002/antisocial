@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityRenderer.class)
 public class EntityRendererMixin {
-
     @Inject(method = "hasLabel", at = @At("HEAD"), cancellable = true)
     public void hasLabel(CallbackInfoReturnable<Boolean> cir) {
         // skip all rendering regardless of entity type

@@ -11,10 +11,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
-
     @Inject(method = "shouldSpawnSprintingParticles", at = @At("HEAD"), cancellable = true)
     private void shouldSpawnSprintingParticles(CallbackInfoReturnable<Boolean> cir) {
-        if (Antisocial.SKIP_RENDER && ((Entity)(Object)this) instanceof AbstractClientPlayerEntity && (Object)this != MinecraftClient.getInstance().player) {
+        Entity entity = (Entity)(Object)this;
+        MinecraftClient client = MinecraftClient.getInstance();
+        boolean isOtherPlayer = entity instanceof AbstractClientPlayerEntity && entity != client.player;
+
+        if (Antisocial.SKIP_RENDER && isOtherPlayer) {
             cir.setReturnValue(false);
         }
     }

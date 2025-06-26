@@ -1,8 +1,6 @@
 package dev.qixils.antisocial;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
@@ -11,7 +9,6 @@ import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
 public class Antisocial implements ClientModInitializer {
-
     public static boolean SKIP_RENDER = false;
     public static final KeyBinding TOGGLE_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
         "antisocial.key.playerRendering",
